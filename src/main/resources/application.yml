@@ -1,0 +1,23 @@
+server:
+  port: 10010
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      direct:
+        acknowledge-mode:
+        retry:
+          #是否启用发布重试机制
+          enabled: true
+      simple:
+        #ack应答模式 默认自动
+        acknowledge-mode: auto
+        prefetch: 1
+      type: simple
+      template:
+        retry:
+          #发送重试是否可用
+          enabled: true
